@@ -91,7 +91,7 @@ const ListDocuments = ({ visible, onClose, documents = [], onSearch, signedInUse
             >
               Select
             </Button>
-            <Button title="Sure to delete?" onClick={() => handleSave(record)} >
+            <Button title="Sure to delete?" href="https://drive.google.com/drive/u/0/my-drive" onClick={() => handleSave(record)} >
               Save
             </Button>
             <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record)}>
