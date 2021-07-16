@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Row, Col, Spin } from 'antd';
 import styled from 'styled-components';
 import { gapi } from 'gapi-script';
-import DriveUploady from 'drive-uploady';
-import UploadButton from '@rpldy/upload-button';
 
 import GoogleDriveImage from '../../assets/images/google-drive.png';
 import ListDocuments from '../ListDocuments';
+import SelectFile from './select'
 import { style } from './styles';
+import { useSelector } from 'react-redux'
 
 const NewDocumentWrapper = styled.div`
   ${style}
@@ -24,15 +24,10 @@ const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/r
 // included, separated by spaces.
 const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
-const Upload = () => {
-  return (
-    <DriveUploady clientId={CLIENT_ID} scope="https://www.googleapis.com/auth/drive.file">
-      <UploadButton>Upload to Drive</UploadButton>
-    </DriveUploady>
-  );
-};
-
 const SelectSource = () => {
+  const selectFile = useSelector(state => state.SelectFile.value)
+
+  console.log('----hererererer00000000000:',selectFile)
   const [listDocumentsVisible, setListDocumentsVisibility] = useState(false);
   const [documents, setDocuments] = useState([]);
   const [isLoadingGoogleDriveApi, setIsLoadingGoogleDriveApi] = useState(false);
@@ -141,8 +136,26 @@ const SelectSource = () => {
           onSignOut={handleSignOutClick}
           isLoading={isFetchingGoogleDriveFiles}
         />
-        <Upload />
-        <Col span={8}>
+        <SelectFile />
+        {/* <Upload /> */}
+        {selectFile.name === undefined ? 
+        
+          <Col span={8}>
+            <Spin spinning={isLoadingGoogleDriveApi} style={{ width: '100%' }}>
+              <div onClick={() => handleClientLoad()} className="source-container">
+                <div className="icon-container">
+                  <div className="icon icon-success">
+                    <img height="80" width="80" src={GoogleDriveImage} />
+                  </div>
+                </div>
+                <div className="content-container">
+                  <p className="title">Google Drive</p>
+                  <span className="content">Import documents straight from your google drive</span>
+                </div>
+              </div>
+            </Spin>
+          </Col> : 
+          <Col span={8}>
           <Spin spinning={isLoadingGoogleDriveApi} style={{ width: '100%' }}>
             <div onClick={() => handleClientLoad()} className="source-container">
               <div className="icon-container">
@@ -151,12 +164,18 @@ const SelectSource = () => {
                 </div>
               </div>
               <div className="content-container">
-                <p className="title">Google Drive</p>
-                <span className="content">Import documents straight from your google drive</span>
+                <p className="title">File Name: {selectFile.name}</p>
+                <span className="title">File Date: {selectFile.date}</span>
               </div>
             </div>
           </Spin>
+          <div className="g-savetodrive" 
+              data-src="url of file"
+              data-filename={selectFile.name}
+              data-sitename="Pictures of Pugs">
+          </div>
         </Col>
+        }
       </Row>
     </NewDocumentWrapper>
   );

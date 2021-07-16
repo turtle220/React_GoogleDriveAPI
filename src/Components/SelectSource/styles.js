@@ -42,6 +42,29 @@ const style = () => css`
       justify-content: center;
     }
   }
+  .card {
+    background-color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1, padding:20px;
+    -ms-flex: 1, padding:20px;
+    flex: 1, padding:20px;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 200px;
+    box-shadow: 0 1px 1px 0 rgb(10 22 70 / 10%), 0 0 1px 0 rgb(10 22 70 / 6%);
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%;
+    justify-content: center;
+    vertical-align: ce;
+    flex-flow: column-reverse;
+  }
 `;
 
 export { style };
