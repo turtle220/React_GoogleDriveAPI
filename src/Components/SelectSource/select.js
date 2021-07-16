@@ -79,7 +79,6 @@ export default function App() {
         onChange={handleChange}
       />
       <br />
-      {/* <button onClick={handleUpload}>Upload</button> */}
     </div>
   );
 }

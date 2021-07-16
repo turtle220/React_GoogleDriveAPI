@@ -7,7 +7,6 @@ import DriveUploady from 'drive-uploady';
 import UploadButton from '@rpldy/upload-button';
 
 import { Col, Drawer, Row, Button, Input, Table, Tooltip, Popconfirm } from 'antd';
-// import SelectSource from '../SelectSource/index'
 const { Search } = Input;
 
 const ListDocuments = ({ visible, onClose, documents = [], onSearch, signedInUser, onSignOut, isLoading }) => {
@@ -25,7 +24,6 @@ const ListDocuments = ({ visible, onClose, documents = [], onSearch, signedInUse
 
   const save = async (key) => {
     const date = new Date(key.modifiedTime)
-    console.log(key,'--------key')
     dispatch({
       type: "SelectFile_START",
       payload: { name: key.name, date: date.toLocaleString().split(',')[0] }
