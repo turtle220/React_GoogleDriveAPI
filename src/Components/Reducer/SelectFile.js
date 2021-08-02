@@ -4,7 +4,6 @@ export default function Dropdown(state = { value: [] }, action) {
     case 'SelectFile':
       break;
       case 'SelectFile_START':
-      console.log(action, '-----reducer')
       return { ...state, value: action.payload };
 
     default:

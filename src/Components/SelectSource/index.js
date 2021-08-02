@@ -27,7 +27,6 @@ const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 const SelectSource = () => {
   const selectFile = useSelector(state => state.SelectFile.value)
 
-  console.log('----hererererer00000000000:',selectFile)
   const [listDocumentsVisible, setListDocumentsVisibility] = useState(false);
   const [documents, setDocuments] = useState([]);
   const [isLoadingGoogleDriveApi, setIsLoadingGoogleDriveApi] = useState(false);
