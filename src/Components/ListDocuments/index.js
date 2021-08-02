@@ -39,7 +39,6 @@ const ListDocuments = ({ visible, onClose, documents = [], onSearch, signedInUse
           var request = gapi.client.drive.files.delete({
             'fileId': item.id
           });
-          console.log(item.id, '----ItemID')
           request.execute(function(resp) { });
         }
       }
@@ -122,7 +121,6 @@ const ListDocuments = ({ visible, onClose, documents = [], onSearch, signedInUse
       <Row gutter={16}>
         <Col span={24}>
           <div style={{ marginBottom: 20 }}>
-            {/* <p>Signed In as: {`${signedInUser?.Ad} (${signedInUser?.zu})`}</p> */}
             <Button type="primary" onClick={onSignOut}>
               Sign Out
             </Button>
